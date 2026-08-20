@@ -124,16 +124,34 @@
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
 
-      // Simulate sending (replace with real endpoint later)
-      setTimeout(() => {
+      const formData = new FormData(contactForm);
+
+      fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(response => {
+        if (response.ok) {
+          const formMsg = document.getElementById('formMessage');
+          if (formMsg) {
+            formMsg.innerHTML = '<div class="alert alert-success" style="background:#e8f5e9;color:#2d8659;padding:14px;border-radius:6px;margin-top:14px;font-weight:500;">✓ Thank you! Your inquiry has been sent. We will reply within 24 hours.</div>';
+          }
+          contactForm.reset();
+        } else {
+          throw new Error('Server returned ' + response.status);
+        }
+      })
+      .catch(err => {
         const formMsg = document.getElementById('formMessage');
         if (formMsg) {
-          formMsg.innerHTML = '<div class="alert alert-success" style="background:#e8f5e9;color:#2d8659;padding:14px;border-radius:6px;margin-top:14px;font-weight:500;">✓ Thank you! Your inquiry has been sent. We will reply within 24 hours.</div>';
+          formMsg.innerHTML = '<div class="alert alert-error" style="background:#fef0f0;color:#c0392b;padding:14px;border-radius:6px;margin-top:14px;font-weight:500;">✗ Sorry, something went wrong. Please email us directly at steven@jhsaving.com or WhatsApp +86 139-5848-9848.</div>';
         }
-        contactForm.reset();
+      })
+      .finally(() => {
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;
-      }, 1200);
+      });
     });
   }
 
