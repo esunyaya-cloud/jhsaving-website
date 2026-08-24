@@ -1,0 +1,8 @@
+# Cloudflare Pages _redirects
+# https://developers.cloudflare.com/pages/configuration/redirects/
+
+# Bare domain → www (canonical normalization)
+# Only works if both domains point to Cloudflare Pages
+https://jhsaving.com/* https://www.jhsaving.com/:splat 301
+
+# HTTP → HTTPS is handled automatically by Cloudflare Pages, no rule needed

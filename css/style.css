@@ -573,7 +573,8 @@ section {
 .section-dark .section-title { color: white; }
 .section-dark .section-desc { color: rgba(255,255,255,0.8); }
 
-.section-desc {
+.section-desc,
+.section-subtitle {
   font-size: 17px;
   color: var(--color-text-light);
   line-height: 1.7;
@@ -1152,6 +1153,21 @@ textarea.form-control {
 /* ============================================
    FAQ
    ============================================ */
+.faq-section {
+  padding: 56px 0;
+  background: linear-gradient(180deg, #f8f9fa 0%, #fff 100%);
+}
+
+.faq-section .section-title {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.faq-section .section-subtitle {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
 .faq-list {
   max-width: 800px;
   margin: 0 auto;
@@ -1171,7 +1187,8 @@ textarea.form-control {
   border-color: var(--color-accent);
 }
 
-.faq-q {
+.faq-q,
+.faq-item > summary {
   padding: 20px 24px;
   font-weight: 600;
   font-size: 16px;
@@ -1184,9 +1201,11 @@ textarea.form-control {
   gap: 16px;
 }
 
-.faq-q::-webkit-details-marker { display: none; }
+.faq-q::-webkit-details-marker,
+.faq-item > summary::-webkit-details-marker { display: none; }
 
-.faq-q::after {
+.faq-q::after,
+.faq-item > summary::after {
   content: "+";
   font-size: 24px;
   font-weight: 300;
@@ -1195,11 +1214,13 @@ textarea.form-control {
   flex-shrink: 0;
 }
 
-.faq-item[open] .faq-q::after {
+.faq-item[open] .faq-q::after,
+.faq-item[open] > summary::after {
   transform: rotate(45deg);
 }
 
-.faq-a {
+.faq-a,
+.faq-answer {
   padding: 0 24px 20px;
   color: var(--color-text-light);
   line-height: 1.7;

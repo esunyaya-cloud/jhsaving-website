@@ -1,32 +1,33 @@
-# Robots.txt for SAVING Industry
-# https://www.jhsaving.com/robots.txt
+# ============================================
+# robots.txt — SAVING Industry (jhsaving.com)
+# Last updated: 2026-08-24
+# GEO-first: AI crawlers explicitly allowed at TOP
+# ============================================
 
-User-agent: *
-Allow: /
+# ---- AI SEARCH ENGINE CRAWLERS (GEO) ----
+# Must be ABOVE User-agent:* so "first match wins" never blocks AI.
+# Allow full crawl + allow AI training / retrieval / citation.
 
-# Disallow common admin/private paths (none currently, but prepared)
-Disallow: /admin/
-Disallow: /private/
-Disallow: /*.json$
-
-# Crawl-delay for politeness
-Crawl-delay: 1
-
-# Sitemap location
-Sitemap: https://www.jhsaving.com/sitemap.xml
-
-# AI crawlers (GEO optimization - allow AI to crawl for citation)
 User-agent: GPTBot
 Allow: /
+Disallow: /admin/
+Disallow: /private/
 
 User-agent: Google-Extended
 Allow: /
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+User-agent: Perplexity-User
+Allow: /
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /admin/
+Disallow: /private/
 
 User-agent: anthropic-ai
 Allow: /
@@ -42,3 +43,25 @@ Allow: /
 
 User-agent: Amazonbot
 Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# ---- ALL OTHER CRAWLERS ----
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+
+# Crawl-delay for politeness
+Crawl-delay: 1
+
+# ---- SITEMAP ----
+Sitemap: https://www.jhsaving.com/sitemap.xml
