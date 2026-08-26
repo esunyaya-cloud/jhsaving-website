@@ -2172,6 +2172,34 @@ textarea.form-control {
   .product-grid { grid-template-columns: 1fr; }
 }
 
+/* ============================================
+   COMPARISON TABLE (blog posts)
+   ============================================ */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0 32px;
+  font-size: 15px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+.comparison-table th, .comparison-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+.comparison-table thead th {
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+}
+.comparison-table tbody tr:nth-child(even) { background: var(--color-bg-soft); }
+.comparison-table td:first-child { font-weight: 600; color: var(--color-primary-dark); }
+.comparison-table .yes { color: #2e7d32; font-weight: 600; }
+.comparison-table .no { color: #c0392b; font-weight: 600; }
+
 /* Print friendly */
 @media print {
   .header, .footer, .wa-float, .nav-cta { display: none; }
